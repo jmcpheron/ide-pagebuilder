@@ -1,0 +1,36 @@
+{
+  "source_file": "free-tuition/pages.efgByStu.json",
+  "page_name": "efgByStu",
+  "literals": [
+    {
+      "component_path": "0",
+      "name": "style",
+      "filename": "style.js",
+      "content_hash": "95d44dc5039e9884c0411b8e19d7865d"
+    },
+    {
+      "component_path": "1",
+      "name": "header",
+      "filename": "header.html",
+      "content_hash": "1dbd66827e5f8c9c4cd311d62e2f7b49"
+    },
+    {
+      "component_path": "3.components.0",
+      "name": "main_literal",
+      "filename": "main_literal.html",
+      "content_hash": "e3a9a8f8c75db1a78d5cf4acdb4a517c"
+    },
+    {
+      "component_path": "3.components.1",
+      "name": "functions",
+      "filename": "functions.js",
+      "content_hash": "72935b10b4c5bcc0b7d6c1fa84fe404a"
+    },
+    {
+      "component_path": "3.components.2",
+      "name": "js",
+      "filename": "js.js",
+      "content_hash": "1c21703a9b55e7df5719f30189ed5113"
+    }
+  ]
+}

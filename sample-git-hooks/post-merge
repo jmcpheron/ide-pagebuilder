@@ -1,0 +1,14 @@
+#!/bin/bash
+#
+# Sample post-merge hook for Banner Extensibility literal extraction
+#
+# Install by copying to .git/hooks/post-merge and making executable:
+#   cp sample-git-hooks/post-merge .git/hooks/post-merge
+#   chmod +x .git/hooks/post-merge
+
+echo "🔄 Post-merge: Extracting updated literals..."
+
+# Extract literals after merge to keep extracted files in sync
+python3 extract_literals.py extract
+
+echo "✅ Literals re-extracted after merge"

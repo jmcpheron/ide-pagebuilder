@@ -1,0 +1,66 @@
+{
+   "constantName": "name-coach-v3",
+   "developerSecurity": [],
+   "extendsPage": null,
+   "fileTimestamp": "2025-06-20T17:40:36Z",
+   "modelView": {
+      "components": [
+         {
+            "resource": "virtualDomains.namecoach_getinfo",
+            "name": "getinfo",
+            "type": "resource",
+            "staticData": []
+         },
+         {
+            "name": "style",
+            "type": "literal",
+            "value": "<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\n<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\"></script>\n<style>\n  body {\n    font-family: 'Helvetica Neue', Arial, sans-serif;\n    color: #333;\n    background-color: #f8f9fa;\n  }\n  .container {\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 2rem;\n  }\n  h1, h2, h3, h4, h5 {\n    color: #222222;\n  }\n  .lead {\n    font-size: 1.25rem;\n    font-weight: 300;\n  }\n  .card {\n    border-radius: 8px;\n    box-shadow: 0 4px 6px rgba(0,0,0,0.1);\n    margin-bottom: 2rem;\n    border: none;\n  }\n  .btn-record {\n    background-color: #0d4268;\n    color: white;\n    border: none;\n    padding: 12px 30px;\n    font-size: 1.1rem;\n    border-radius: 30px;\n    cursor: pointer;\n    transition: all 0.3s ease;\n    font-weight: 500;\n  }\n  .btn-record:hover {\n    background-color: #083553;\n    transform: translateY(-2px);\n    box-shadow: 0 4px 8px rgba(0,0,0,0.2);\n  }\n  .how-it-works-step {\n    position: relative;\n    padding-left: 60px;\n    margin-bottom: 2rem;\n  }\n  .step-number {\n    position: absolute;\n    left: 0;\n    top: 0;\n    width: 45px;\n    height: 45px;\n    background-color: #0d4268;\n    color: white;\n    border-radius: 50%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    font-size: 1.5rem;\n    font-weight: bold;\n  }\n\n</style>"
+         },
+         {
+            "components": [
+               {
+                  "name": "main_literal",
+                  "type": "literal",
+                  "value": "<div class=\"container\">\n  <div class=\"row mb-4\">\n    <div class=\"col-12 text-center\">\n      <div class=\"mb-3\">\n        <!-- Logo Placeholder -->\n        <img src=\"https://www.wvm.edu/_resources/images/wvm-logo.svg\" alt=\"West Valley - Mission CCD\" class=\"img-fluid\" style=\"max-height: 80px;\">\n      </div>\n      <h1>Record Your Name with Name Coach</h1>\n      <p class=\"lead\">Help your instructors and peers pronounce your name correctly</p>\n    </div>\n  </div>\n  \n  <div class=\"row mb-5\">\n    <div class=\"col-lg-6\">\n      <div class=\"card\">\n        <div class=\"card-body text-center py-5\">\n          <h3 class=\"mb-4\">Ready to Record Your Name?</h3>\n          <p class=\"mb-4\">Click the button below to open the recording interface and capture your name pronunciation.</p>\n          <button data-toggle=\"nc-widget\"\n                  class=\"btn-record\"\n                  data-attributes-email-presentation=\"readonly\"\n                  data-attributes-first-name-presentation=\"readonly\"\n                  data-attributes-middle-name-value=\"\"\n                  data-attributes-last-name-presentation=\"readonly\"\n                  data-attributes-notes-presentation=\"hidden\">\n            Record My Name\n          </button>\n        </div>\n      </div>\n    </div>\n    <div class=\"col-lg-6 mb-4\">\n      <h2>How It Works</h2>\n      <div class=\"how-it-works-step\">\n        <div class=\"step-number\">1</div>\n        <h4>Click the \"Record My Name\" button</h4>\n        <p>When you click the button, the Name Coach recording widget will open directly in your browser.</p>\n      </div>\n      <div class=\"how-it-works-step\">\n        <div class=\"step-number\">2</div>\n        <h4>Record your name</h4>\n        <p>Use your device's microphone to record the correct pronunciation of your name. You can listen to and re-record until you're satisfied.</p>\n      </div>\n      <div class=\"how-it-works-step\">\n        <div class=\"step-number\">3</div>\n        <h4>Save and confirm</h4>\n        <p>Click \"Save changes\" to store your recording. Your name pronunciation will be available to your instructors through the college learning management system.</p>\n      </div>\n    </div>\n  </div>\n  \n  <div class=\"row\">\n    <div class=\"col-md-12\">\n      <!-- FAQ section commented out\n      <div class=\"card\">\n        <div class=\"card-body\">\n          <h3>Frequently Asked Questions</h3>\n          \n          <div class=\"mt-4\">\n            <h5>Do I need special equipment to record my name?</h5>\n            <p>No, you only need a device with a microphone (built into most computers, laptops, and mobile devices).</p>\n          </div>\n          \n          <div class=\"mt-3\">\n            <h5>Who will have access to my recording?</h5>\n            <p>Your instructors and authorized college staff will have access to hear your name pronunciation.</p>\n          </div>\n          \n          <div class=\"mt-3\">\n            <h5>Can I re-record my name?</h5>\n            <p>Yes, you can return to this page anytime to record a new pronunciation.</p>\n          </div>\n          \n          <div class=\"mt-3\">\n            <h5>Is this required?</h5>\n            <p>While recording your name is optional, we strongly encourage you to use this service to help your instructors and peers pronounce your name correctly.</p>\n          </div>\n        </div>\n      </div>\n      -->\n    </div>\n  </div>\n</div>\n\n<script type=\"text/javascript\" src=\"https://nc-widget-v3.s3.us-east-2.amazonaws.com/bundle.js\"> </script>\n<script>\n    ncE(function() {\n        ncE.configure(function(config) {\n            config.eventCode = \"C11E08\";\n            config.accessToken = \"47963erHHLSzTJdczDj7\";\n            config.brandColor = \"#0d4268\";\n            config.embedded = false;\n            config.dictionary = {\n               web_recorder_button_label: \"Record My Name\",\n               pitch_max_value_label: \"High\",\n               pitch_min_value_label: \"Low\",\n               pitch_set_default_link_label: \"Default\",\n               pitch_slider_label: \"Adjust recording audio pitch\",\n               only_web_recorder: false,\n               web_recorder_auto_submit: true,\n               call_session_auto_submit: true\n            };\n            config.customStyles = {\n               playBackBtnColor: \"000000\",\n               recordBtnColor: \"#0d4268\",\n               showBox: \"false\",\n               pitchTrackColor: \"#0d4268\",\n               pitchThumbColor: \"00000\"\n            };\n            config.kioskOptions = {\n              pitchEnabled: true,\n              webRecorderOnly: true,\n              enableAutoSubmit: true\n            };\n         });\n    });\n</script>"
+               }
+            ],
+            "role": "main",
+            "name": "main_block",
+            "style": "container",
+            "showInitially": true,
+            "type": "block"
+         },
+         {
+            "name": "getinfo_data",
+            "pageSize": 5,
+            "onLoad": "const firstName = data[0].FIRST_NAME;\n  const lastName = data[0].LAST_NAME;\n  const email= data[0].EMAIL;\n  let phone= data[0].PHONE;\nconsole.log(phone);\n  phone = \"+1\" + phone.replaceAll(\"-\", \"\");\nconsole.log(phone);\n\nconst button = document.querySelector('button[data-toggle=\"nc-widget\"]');\n\n// Update the data attributes\nbutton.setAttribute('data-attributes-email-value', email);\nbutton.setAttribute('data-attributes-first-name-value', firstName);\nbutton.setAttribute('data-attributes-last-name-value', lastName);\n\n  window.foo(firstName, lastName, email, phone);\n//$(\"#namecoach-call-widget-phone_number\").css('display', 'none');",
+            "model": "getinfo",
+            "loadInitially": true,
+            "type": "data",
+            "parameters": {}
+         }
+      ],
+      "name": "nameCoachV3",
+      "style": "bootstrap5",
+      "pageURL": "${BANNER_BASE_URL}/BannerExtensibility/customPage/page/myPortal",
+      "label": "",
+      "type": "page",
+      "title": "Record Your Name - Name Coach",
+      "importCSS": ""
+   },
+   "owner": null,
+   "pageRoles": [
+      {
+         "roleName": "ADMIN-GPBADMN",
+         "allow": true
+      },
+      {
+         "roleName": "ALLROLES",
+         "allow": true
+      },
+      {
+         "roleName": "PPRD TESTERS",
+         "allow": true
+      }
+   ]
+}

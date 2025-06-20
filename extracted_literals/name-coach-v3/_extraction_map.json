@@ -1,0 +1,18 @@
+{
+  "source_file": "name-coach/pages.name-coach-v3.json",
+  "page_name": "name-coach-v3",
+  "literals": [
+    {
+      "component_path": "1",
+      "name": "style",
+      "filename": "style.js",
+      "content_hash": "be8f2230d049ae09ede2aaa0941b4bdc"
+    },
+    {
+      "component_path": "2.components.0",
+      "name": "main_literal",
+      "filename": "main_literal.js",
+      "content_hash": "83c183078a1b1d7fcdfdca2596d93998"
+    }
+  ]
+}

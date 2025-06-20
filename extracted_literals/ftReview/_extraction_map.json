@@ -1,0 +1,36 @@
+{
+  "source_file": "free-tuition/pages.ftReview.json",
+  "page_name": "ftReview",
+  "literals": [
+    {
+      "component_path": "0",
+      "name": "style",
+      "filename": "style.js",
+      "content_hash": "b1b794af11f99044229668736f52333a"
+    },
+    {
+      "component_path": "1",
+      "name": "header",
+      "filename": "header.html",
+      "content_hash": "d1f3125a64febed6ed775b3d6d2175b3"
+    },
+    {
+      "component_path": "3.components.0",
+      "name": "main_literal",
+      "filename": "main_literal.html",
+      "content_hash": "bdd97d83207d5710d5707cb4f0a0fb7a"
+    },
+    {
+      "component_path": "3.components.1",
+      "name": "functions",
+      "filename": "functions.js",
+      "content_hash": "8d77c1b9572739a8d98d1381b5f76d24"
+    },
+    {
+      "component_path": "3.components.2",
+      "name": "js",
+      "filename": "js.js",
+      "content_hash": "c9396ad12648752ab9414f0d911ebbe4"
+    }
+  ]
+}

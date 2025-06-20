@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# Sample pre-commit hook for Banner Extensibility literal extraction
+# 
+# Install by copying to .git/hooks/pre-commit and making executable:
+#   cp sample-git-hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x .git/hooks/pre-commit
+
+echo "🔄 Extracting literals for code review..."
+
+# Extract literals before commit
+python3 extract_literals.py extract
+
+# Add extracted files to the commit
+git add extracted_literals/
+
+echo "✅ Literals extracted and staged for commit"
+
+# Optional: Run rebuild to ensure JSON is up to date
+# Uncomment if you want to auto-rebuild before commits
+# echo "🔄 Rebuilding JSON files..."
+# python3 extract_literals.py rebuild
+# git add *.json
+
+echo "✅ Pre-commit checks complete"

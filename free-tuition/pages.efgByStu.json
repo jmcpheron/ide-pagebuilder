@@ -1,0 +1,102 @@
+{
+   "constantName": "efgByStu",
+   "developerSecurity": [],
+   "extendsPage": null,
+   "fileTimestamp": "2025-06-18T19:03:18Z",
+   "modelView": {
+      "components": [
+         {
+            "name": "style",
+            "type": "literal",
+            "value": "<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ\" crossorigin=\"anonymous\">\n\n<script src=\"https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js\" integrity=\"sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE\" crossorigin=\"anonymous\"></script>\n\n<!--<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js\" integrity=\"sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ\" crossorigin=\"anonymous\"></script>-->\n\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css\" integrity=\"sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" />"
+         },
+         {
+            "name": "header",
+            "type": "literal",
+            "value": "<div class=\"text-center\"><h1>AB 3158 Free Tuition Status</h1></div>"
+         },
+         {
+            "components": [
+               {
+                  "components": [
+                     {
+                        "valueStyle": "form-select",
+                        "label": "Select a term",
+                        "loadInitially": true,
+                        "type": "select",
+                        "required": false,
+                        "sourceParameters": {},
+                        "name": "select_term",
+                        "onLoad": "",
+                        "sourceModel": "sorrtrm",
+                        "style": "col-12 col-md-3",
+                        "labelKey": "STVTERM_DESC",
+                        "valueKey": "SORRTRM_TERM_CODE",
+                        "onUpdate": "$term = $select_term; $sfrstca_data.$load();"
+                     }
+                  ],
+                  "name": "select_block_row",
+                  "style": "hide",
+                  "showInitially": true,
+                  "type": "block"
+               }
+            ],
+            "role": "section",
+            "name": "select_block",
+            "style": "container",
+            "showInitially": true,
+            "type": "block"
+         },
+         {
+            "components": [
+               {
+                  "name": "main_literal",
+                  "type": "literal",
+                  "value": "<div class=\"row\">\n<div class=\"row g-3 align-items-center\">\n\n<div class=\"col-auto\">\n<form method=\"get\" action=\"\" >\n<span id=\"term-dropdown\"></span><br />\n<label for=\"gid\" class=\"form-label\">Student Banner ID (G0#)</label>\n<input type=\"text\" class=\"form-control\" name=\"gid\" id=\"gid\"><br />\n<span id=\"enter-gid\" style=\"Display:none;\">Please enter a valid G0#</span><br />\n<button type=\"submit\" class=\"btn btn-primary\">Update</button>\n</form>\n  </div>\n</div>\n\n<h2>Student Name: <span id=\"wvm-stu-name\"></span></h2>\n\n<div class=\"container\" id=\"emp-inelg\" style=\"display:none;\">\n<div class=\"alert alert-danger\" role=\"alert\" >\n  <b>Employees are not eligible:</b><br />\nEmployees are not eligible for the enrollment fee grant at this time.<br /><br />\n-- <a href=\"#\" id=\"emp-deets\">Show/hide details</a> --\n</div>\n</div>\n\n<div class=\"container\" id=\"fall-info\" >\n<div class=\"alert alert-info\" role=\"alert\" id=\"blue-info-box\">\n</div>\n</div>\n\n\n<div class=\"container\" id=\"wvm-no\" style=\"display:none;\">\n<div class=\"alert alert-danger\" role=\"alert\">\n  <b>Criteria not met:</b><br />\nYou are not currently eligible for our free tuition program. For questions, reach out to <a href=\"https://www.westvalley.edu/\">Westly</a> or <a href=\"https://missioncollege.edu/\">Clara</a> for chat assistance, including live chat\n</div>\n</div>\n\n<div class=\"container\" id=\"wvm-success\" style=\"display:none;\">\n<div class=\"alert alert-success\" role=\"alert\">\n  <b>Meet all criteria:</b><br />\nCongratulations! We are excited to share that you are eligible for our new free tuition program: the Enrollment \nFee Grant, which begins in Spring 2024.\nTo view your awards, log onto <a href=\"https://generalssb-prod.ec.wvm.edu/BannerExtensibility/customPage/page/myPortal\">your Portal</a>. The fee waiver will be applied upon Spring 2024 registration.\n</div>\n\n</div>\n<!--<h4>Free Tuition status</h4>\n\n<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">\n  <button type=\"button\" class=\"btn btn-outline-primary\" id=\"bh1\">H1</button>\n  <button type=\"button\" class=\"btn btn-outline-primary\" id=\"bh2\">H2</button>\n  <button type=\"button\" class=\"btn btn-outline-primary\" id=\"bh3\">H3</button>\n  <button type=\"button\" class=\"btn btn-outline-primary\" id=\"bh4\">H4</button>\n  <button type=\"button\" class=\"btn btn-outline-primary\" id=\"bh5\">H5</button>\n  <button type=\"button\" class=\"btn btn-outline-primary\" id=\"bh6\">H6</button>\n</div>\n-->\n</div>\n\n<div id='wvm-loading-gif'><img src='https://web.wvm.edu/images/wvm_loading.gif'  style=\"width:100px;height:100px;\"/><h2>Loading...</h2></div>\n\n<div class=\"table-responsive\" id=\"ft-results\" style=\"display: none;\">\n\n        <table class=\"table align-middle\" id=\"class_summary_table\">\n            <caption></caption>\n<tbody>\n<tr>\n  <td>\n    <h5><span class=\"badge bg-success\" id=\"yes-1\" style=\"display:none;\">Yes</span></h5>\n    <h5><span class=\"badge bg-warning text-dark\" id=\"no-1\">No</span></h5>\n  </td>\n  <td>\n  Submitted a Free Application for Federal Student Aid (FAFSA) or CA Dream Act Application (CADAA) for the current aid year \n\n<span id=\"req-1\">\n<hr />\n<b>Missing FAFSA or CADAA:</b><br />\nTo qualify for the AB3158 waiver, it is strongly recommended that you complete your Free Application for Federal Student Aid (FAFSA) or CA Dream Act Application (CADAA) for the current aid year and list either West Valley (001338) or Mission College (014458) on your application.\n<br /><br />\nTo opt-out of the financial aid requirement, please complete the <b><a href=\"https://missioncollege.formstack.com/forms/free_tuition_financial_aid_exemption\" target=\"_blank\" rel=\"noopener noreferrer\">AB 3158 Free Tuition - Financial Aid Opt-Out & Disclosures Form</a></b>\n<br /><br />\nFor FAFSA / CADAA application support, please contact the Financial Aid Office at your home campus.\n<ul>\n<li><a href=\"https://missioncollege.edu/student_services/financial_aid/\" target=\"_blank\" rel=\"noopener noreferrer\">Mission College</a> | <a href=\"https://wvm-edu.zoom.us/j/93431076826\" target=\"_blank\" rel=\"noopener noreferrer\">Mission College Zoom</a> Tuesdays, 1:00 PM&ndash;2:00 PM | Email: <a href=\"mailto:mcfa@missioncollege.edu\">mcfa@missioncollege.edu</a></li>\n<li><a href=\"https://www.westvalley.edu/financial-aid/\" target=\"_blank\" rel=\"noopener noreferrer\">West Valley College</a> | <a href=\"https://wvm-edu.zoom.us/j/9975398297\" target=\"_blank\" rel=\"noopener noreferrer\">West Valley College Zoom</a> Tuesdays, 10:30 AM&ndash;12:00 PM | Email: <a href=\"mailto:wvfa@westvalley.edu\">wvfa@westvalley.edu</a></li>\n</ul>\n<br /><br />\n  </td>\n</tr>\n\n<tr>\n  <td>\n    <h5><span class=\"badge bg-success\" id=\"yes-2\" style=\"display:none;\">Yes</span></h5>\n    <h5><span class=\"badge bg-warning text-dark\" id=\"no-2\">No</span></h5>\n  </td>\n  <td>\n  Working towards a degree or credit-level certificate \n<span id=\"req-2\">\n<hr />\n<b>Don't have a degree or credit-level certificate:</b><br />\nTo qualify for the Enrollment Fee Grant, you are required to major in an associate degree program or credit-level \ncertificate program. To update your program of study:\n<ul>\n<li>For Mission College, complete this request : <a href=\"https://missioncollege.formstack.com/forms/programchange\">https://missioncollege.formstack.com/forms/programchange</a></li>\n<li>For West Valley: Complete this request: <a href=\"https://westvalley.formstack.com/forms/change_of_major\">https://westvalley.formstack.com/forms/change_of_major</a></li>\n</ul>\n</span>\n  </td>\n</tr>\n\n<tr>\n  <td>\n    <h5><span class=\"badge bg-success\" id=\"yes-3\" style=\"display:none;\">Yes</span></h5>\n    <h5><span class=\"badge bg-warning text-dark\" id=\"no-3\">No</span></h5>\n  </td>\n  <td>\n  CA resident or California Nonresident Tuition Exemption (AB540)  \n<span id=\"req-3\">\n<hr />\n<b>Not a CA resident/AB540:</b><br />\nTo qualify for the Enrollment Fee Grant, you are required have California residency, or California Nonresident Tuition \nExemption (AB540). <br />\nFor questions, reach out to <a href=\"https://www.westvalley.edu/\">Westly</a> or <a href=\"https://missioncollege.edu/\">Clara</a> for chat assistance, including live chat\n</span>\n  </td>\n</tr>\n\n<tr>\n  <td>\n    <h5><span class=\"badge bg-success\" id=\"yes-4\" style=\"display:none;\">Yes</span></h56>\n    <h5><span class=\"badge bg-warning text-dark\" id=\"no-4\">No</span></h5>\n  </td>\n  <td>\n  Live in the service area of Mission College or West Valley College \n<span id=\"req-4\">\n<hr />\n<b>Must Live in the service area of MC or WV:</b><br />\nTo qualify for AB 3158, your address must be within the service area of the West Valley-Mission \nCommunity.<br />\nFor questions, reach out to <a href=\"https://www.westvalley.edu/\">Westly</a> or <a href=\"https://missioncollege.edu/\">Clara</a> for chat assistance, including live chat\n</span>\n  </td>\n</tr>\n</tbody>\n</table>\n\n\n\n</div> <!-- end table div -->"
+               },
+               {
+                  "name": "functions",
+                  "type": "literal",
+                  "value": "<script>\n\nfunction drawTermDropdown(selected_term, gid){\n    \n      url = '/BannerExtensibility/internalPb/virtualDomains.efg_terms';\n        $.ajax({\n        url: url,\n        method: \"GET\",\n        data: { \n          max: 300,\n          offset: \"0\"\n          }\n      })\n      .done(function(data) {\n          $(\"#term-dropdown\").html(\"<label for='term'>Select or change term</label><select id='term' name='term'  class='form-select'></select>\");\n    \n    var output = [];\n    \n    $.each(data, function(key, v)\n    { \n      selected = \"\";\n      if(v[\"EFG_TERM\"] == selected_term){\n        selected = \" SELECTED \";\n      }\n      output.push('<option value=\"'+ v[\"EFG_TERM\"] +'\" '+selected + '>'+ v[\"STVTERM_DESC\"] +'</option>');\n    });\n    \n    $('#term').html(output.join(''));\n    \n       //$(\"#term-dropdown\").append(\"</select>\");\n       $(\"#term-dropdown\").change(function(){\n            new_term = $( \"#term-dropdown option:selected\" ).val();\n            window.open(\"?gid=\" + gid + \"&term=\" + new_term,\"_self\")\n        });\n    \n      });\n    \n};\n\nfunction getFtInfo(term, gid){\nvar url= '/BannerExtensibility/internalPb/virtualDomains.free_tuition_gid';\n$.ajax({\n    headers: { \n\t'Accept': 'application/json',\n\t'Content-Type': 'application/json' \n    },\n    'type': 'GET',\n    'url': url,\n    'dataType': 'json',\n        data: { \n          max: 1,\n          offset: \"0\",\n          'term': term,\n          'gid': gid\n          }\n\n    })\n    .done(function(data){\n      console.log( data[0]);\n      var how_good = 0;\n      $(\"#wvm-stu-name\").html(data[0]['STU_NAME'] + '.');\n\n    var addy = \"<b>Current Active Address:</b><br />\";\n    addy+= data[0]['ADDRESS_TYPE'];\n    addy+= \"<br />\";\n    addy+= data[0]['STREET1'];\n    addy+= \"<br />\";\n    addy+= data[0]['CITY'];\n    addy+= \", \";\n    addy+= data[0]['STATE'];\n    addy+= \" \";\n    addy+= data[0]['ZIP'];\n    addy+= \"<br />\";\n    $(\"#efg-addy-details\").html(addy);\n\n      if(data[0]['EMPLOYEE_IND'] == 'Y'){\n        $(\"#emp-inelg\").show();\n        how_good--; \n        console.log(how_good);\n      }\n\n      if(data[0]['FAFSA_IND'] == 'Y'){\n        $(\"#no-1\").hide();\n        $(\"#req-1\").hide();\n        $(\"#yes-1\").show();\n        how_good++;\n      }\n\n      if(data[0]['LEVEL_CODE'] == 'CR'){\n        $(\"#no-2\").hide();\n        $(\"#req-2\").hide();\n        $(\"#yes-2\").show();\n        how_good++;      }\n\n      if(data[0]['DECODE_RESD_CODE'] == 'Y'){\n        $(\"#no-3\").hide();\n        $(\"#req-3\").hide();\n        $(\"#yes-3\").show();\n        how_good++;      }\n\n      if( (data[0]['SERVICE_ZIP_IND'] == 'Y') || (data[0]['EXEMPT_LVL'] == 'AA') ){\n        $(\"#no-4\").hide();\n        $(\"#req-4\").hide();\n        $(\"#yes-4\").show();\n        how_good++;\n      }\n  if(how_good >= 4){\n    $(\"#wvm-success\").show();\n    $(\"#wvm-no\").hide();\n  }else{\n    $(\"#wvm-no\").show();\n    console.log('Not met');\n}\n  $(\"#wvm-loading-gif\").hide();\n  $(\"#ft-results\").show();\n\n      if(data[0]['EMPLOYEE_IND'] == 'Y'){\n        $(\"#emp-inelg\").show();\n        $(\"#ft-results\").hide();\n        $(\"#wvm-no\").hide();\n      }\n\n  })\n   .fail(function( jqXHR, textStatus ) {\n     console.log( \"Request failed: \" + textStatus );\n    })//end fail\n}\n\nvar getUrlParameter = function getUrlParameter(sParam) {\n    var sPageURL = window.location.search.substring(1),\n        sURLVariables = sPageURL.split('&'),\n        sParameterName,\n        i;\n\n    for (i = 0; i < sURLVariables.length; i++) {\n        sParameterName = sURLVariables[i].split('=');\n\n        if (sParameterName[0] === sParam) {\n            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);\n        }\n    }\n    return false;\n};\n\n</script>"
+               },
+               {
+                  "name": "js",
+                  "type": "literal",
+                  "value": "<script>\n$(document).ready(function(){\n\n  var info_box_text = \"<strong>(07/19/2024): Enrollment Fee Grant | Fall Information</strong><br />Enrollment Fee Grant will not appear on your financial aid award letter until you enroll in course(s).\";\n\ninfo_box_text = \"<strong>(11/2024): AB 3158 | Winter / Spring 2025 Information</strong><br />The free tuition waiver will not appear on your financial aid award letter until you enroll in course(s).\";\n\n  $(\"#blue-info-box\").html(info_box_text);\n\n  $(\".list-title\").text( $(\".username\").text() );\n  var url_string = window.location.href;\n  var url = new URL(url_string);\n  \n  var selectedTerm = '202450';\n  if(url.searchParams.get(\"term\")){\n    var selectedTerm = url.searchParams.get(\"term\");\n  }\n\nconsole.log('selectedTerm');\nif(selectedTerm.substring(4, 6) <= \"50\"){\n//  console.log( (parseInt(selectedTerm.substring(0, 4)) -1).toString() + '-' + selectedTerm.substring(2, 4));\n  $(\".fa-year\").text( (parseInt(selectedTerm.substring(0, 4)) -1).toString() + '-' + selectedTerm.substring(2, 4));\n}else{\n//  console.log( selectedTerm.substring(0, 4).toString() + '-' + (parseInt(selectedTerm.substring(2, 4)) + 1).toString() );\n  $(\".fa-year\").text( selectedTerm.substring(0, 4).toString() + '-' + (parseInt(selectedTerm.substring(2, 4)) + 1).toString()  );\n}\n\n\n$.urlParam = function (name) {\n    var results = new RegExp('[\\?&]' + name + '=([^&#]*)')\n                      .exec(window.location.search);\n\n    return (results !== null) ? results[1] || 0 : false;\n}\ngid = $.urlParam('gid');\ndrawTermDropdown(selectedTerm, gid);\n\n  if( gid.length == 9){\n    $(\"#gid\").val(gid);\n}else{\n    $(\"#wvm-loading-gif\").hide();\n  $(\"#enter-gid\").show();\n}\n  getFtInfo(selectedTerm, gid);\n\n$(\"#emp-deets\").click( function(){\n  $(\"#ft-results\").toggle();\n});\n\n$(\".badge\").click( function(){\n  $(\"#req-\" + $(this).attr(\"id\").slice(-1)).toggle();\n});\n\n$(\".btn-outline-primary\").click( function(){\n  console.log( $(this).attr('id') );\n  var h_level =  $(this).attr('id').slice(-1);\n  $(\".badge\").each( function(){\n    $(this).html(\"<h\" + h_level + \">\" + $(this).text() + \"</h\" + h_level + \">\");\n  });\n  });\n\n});\n\n\n</script>"
+               }
+            ],
+            "role": "main",
+            "name": "main_block",
+            "style": "container",
+            "showInitially": true,
+            "type": "block"
+         }
+      ],
+      "name": "efgByStu",
+      "style": "",
+      "pageURL": "https://generalssb-prod.ec.wvm.edu/BannerExtensibility/customPage/page/myPortal",
+      "label": "",
+      "type": "page",
+      "title": "WVM - Free Tuition Status by Student",
+      "importCSS": "ab-3158-free-tuition-status"
+   },
+   "owner": null,
+   "pageRoles": [
+      {
+         "roleName": "ADMIN-GPBADMN",
+         "allow": true
+      },
+      {
+         "roleName": "ADMISSIONSTAFF",
+         "allow": true
+      },
+      {
+         "roleName": "COUNSELINGSTAFF",
+         "allow": true
+      },
+      {
+         "roleName": "PBFINAIDSTAFF",
+         "allow": true
+      }
+   ]
+}

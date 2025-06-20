@@ -1,0 +1,24 @@
+{
+  "source_file": "name-coach/pages.name-coach.json",
+  "page_name": "name-coach",
+  "literals": [
+    {
+      "component_path": "1",
+      "name": "style",
+      "filename": "style.js",
+      "content_hash": "04c844fdf64cdf62641bb38b0eb50445"
+    },
+    {
+      "component_path": "2.components.0",
+      "name": "main_literal",
+      "filename": "main_literal.html",
+      "content_hash": "a534046eb56ae7d976874258c0a39464"
+    },
+    {
+      "component_path": "2.components.1",
+      "name": "functions",
+      "filename": "functions.js",
+      "content_hash": "c17cd6cb6b56182cc9daf8c6812102e4"
+    }
+  ]
+}
