@@ -3,7 +3,7 @@
     <div class="col-12 text-center">
       <div class="mb-3">
         <!-- Logo Placeholder -->
-        <img src="${COLLEGE_LOGO_URL}" alt="${COLLEGE_NAME}" class="img-fluid" style="max-height: 80px;">
+        <img src="https://www.wvm.edu/_resources/images/wvm-logo.svg" alt="West Valley - Mission CCD" class="img-fluid" style="max-height: 80px;">
       </div>
       <h1>Record Your Name with Name Coach</h1>
       <p class="lead">Help your instructors and peers pronounce your name correctly</p>
@@ -85,8 +85,8 @@
 <script>
     ncE(function() {
         ncE.configure(function(config) {
-            config.eventCode = "${NAME_COACH_EVENT_CODE}";
-            config.accessToken = "${NAME_COACH_ACCESS_TOKEN}";
+            config.eventCode = "C11E08";
+            config.accessToken = "47963erHHLSzTJdczDj7";
             config.brandColor = "#0d4268";
             config.embedded = false;
             config.dictionary = {

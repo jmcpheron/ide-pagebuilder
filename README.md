@@ -1,6 +1,6 @@
-# Banner Extensibility PageBuilder
+# Banner Extensibility Page Builder - Git-Friendly Code Review Tool
 
-A development toolkit for Banner ERP Extensibility custom pages with an innovative literal content extraction system that makes HTML/CSS/JS code reviewable and maintainable.
+Hey, do you have trouble keeping track of your Banner Extensibility page changes? Trying to review HTML/CSS/JS code that's embedded as escaped strings in JSON files? Here's a tool to help translate the format to work better with Git repositories and make your development workflow much smoother.
 
 ## 🚀 Features
 
@@ -14,7 +14,6 @@ A development toolkit for Banner ERP Extensibility custom pages with an innovati
 
 - Python 3.7+
 - Banner ERP Extensibility access
-- Name Coach account (for name pronunciation features)
 
 ## ⚙️ Quick Start
 
@@ -31,8 +30,6 @@ Required environment variables:
 - `COLLEGE_NAME` - Your institution's name
 - `COLLEGE_LOGO_URL` - URL to your college logo
 - `BANNER_BASE_URL` - Your Banner ERP server URL
-- `NAME_COACH_EVENT_CODE` - Your Name Coach event code
-- `NAME_COACH_ACCESS_TOKEN` - Your Name Coach API token
 
 ### 2. Extract Literals for Development
 
@@ -65,17 +62,14 @@ make rebuild
 banner-extensibility-pagebuilder/
 ├── extract_literals.py          # Main extraction tool
 ├── extracted_literals/          # Extracted HTML/CSS/JS files
-│   ├── name-coach-v3/
+│   ├── example-page/
 │   │   ├── main_literal.js      # JavaScript with syntax highlighting
 │   │   ├── style.js             # CSS styles  
 │   │   └── _extraction_map.json # Rebuild mapping
 │   └── ...
-├── name-coach/                  # Name Coach integration pages
-│   ├── pages.name-coach-v3.json
-│   └── pages.name-coach.json
-├── free-tuition/               # Free tuition status pages
-│   ├── pages.ftReview.json
-│   └── pages.efgByStu.json
+├── example-pages/               # Example page implementations
+│   ├── pages.example1.json
+│   └── pages.example2.json
 ├── sample-git-hooks/           # Optional automation
 │   ├── pre-commit
 │   └── post-merge
@@ -103,13 +97,9 @@ make dev-commit   # Rebuild and prepare for commit
 
 ## 📄 Sample Pages
 
-### Name Coach Integration
-- **name-coach-v3**: Modern name pronunciation recording interface
-- **name-coach**: Legacy name coach implementation
-
-### Free Tuition Status
-- **ftReview**: AB 3158 free tuition eligibility checker
-- **efgByStu**: Student-specific tuition status display
+The project includes example pages to demonstrate the extraction system:
+- **Example pages**: Various implementations showing different use cases
+- **Custom integrations**: Templates for building your own Banner Extensibility pages
 
 ## 🛠️ How It Works
 
@@ -155,7 +145,6 @@ Our extraction system:
 
 - [Detailed Extraction Guide](README_LITERALS.md) - Complete workflow documentation
 - [Banner Extensibility Docs](https://banner.ellucian.com/) - Official Banner documentation
-- [Name Coach Integration](https://www.name-coach.com/) - Name pronunciation service
 
 ## 📄 License
 
@@ -167,17 +156,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Documentation**: Check `README_LITERALS.md` for detailed workflows
 - **Community**: Share experiences and get help from other Banner developers
 
-## 🏫 About
+## 👨‍💻 About
 
-Created by **West Valley Mission Community College District** for educational institutions using Banner ERP Extensibility to build custom student and faculty portals. 
+Hey there! I'm Jason, and I work at West Valley Mission Community College District. I built this toolkit to solve a real pain point I was having with Banner Extensibility development - trying to review HTML/CSS/JS code that was embedded as escaped strings in JSON files was driving me nuts!
 
-We're excited to share this toolkit with other **California Community Colleges** and **Banner schools** to help improve student services and development workflows across our educational community.
+This is my personal project that I'm sharing with my programming colleagues across California. If you're working with Banner Extensibility and dealing with the same frustrations, hopefully this toolkit will make your life easier too.
 
-### Community Collaboration
-- 🎓 **California Community Colleges**: We welcome collaboration and knowledge sharing
-- 🏛️ **Banner Schools**: Open to partnerships with other Banner ERP institutions
-- 🤝 **Contributions Welcome**: Help us improve tools for the educational community
+### Why I'm Sharing This
+- 🎓 **California Community Colleges**: I know we're all dealing with similar challenges
+- 🏛️ **Banner Schools**: Let's help each other out with better development workflows
+- 🤝 **Open Source**: Feel free to use, modify, and contribute back
 
 ---
 
-**Note**: This toolkit is designed for Banner ERP Extensibility custom pages. Ensure you have proper Banner system access and permissions before deployment.
+**Note**: This toolkit is designed for Banner ERP Extensibility custom pages. Make sure you have proper Banner system access and permissions before deployment.
