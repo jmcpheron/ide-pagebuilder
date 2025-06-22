@@ -41,3 +41,38 @@ The system uses Oracle SQL with Banner's security model:
 - `pages.{identifier}.json`: Page definitions
 - `virtualDomains.{service_name}.json`: API endpoint definitions
 - `{table_name}.sql`: Database schema definitions
+
+## Development Setup
+
+This project uses uv for modern Python dependency management and development workflows:
+
+### Setup
+```bash
+uv sync
+```
+
+### Common Commands
+```bash
+# Run tests
+uv run pytest
+
+# Format code
+uv run ruff format
+
+# Check code quality
+uv run ruff check
+
+# Run extract_literals script
+uv run python extract_literals.py extract
+uv run python extract_literals.py rebuild
+uv run python extract_literals.py check
+```
+
+### Testing
+The project includes comprehensive test suites:
+- **Page validation tests**: Validate JSON structure and Banner Extensibility compliance
+- **JSON structure tests**: Schema validation and syntax checking
+- **Security tests**: Check for hardcoded secrets and dangerous patterns
+- **Extract literals tests**: Test the literal extraction/rebuild functionality
+
+Run all tests: `uv run pytest tests/ -v`
