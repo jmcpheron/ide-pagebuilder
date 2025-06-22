@@ -13,7 +13,7 @@
          {
             "name": "header",
             "type": "literal",
-            "value": "<div class=\"text-center\"><h1>AB 3158 Free Tuition Status</h1></div>"
+            "value": "<div class=\"text-center\"><h1>*AB 3158 Free Tuition Status</h1></div>"
          },
          {
             "components": [
