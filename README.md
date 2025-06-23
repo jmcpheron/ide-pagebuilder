@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="logo.svg" alt="Banner Extensibility Page Builder" width="400">
+</div>
+
 # Banner Extensibility Page Builder - Git-Friendly Code Review Tool
 
 Hey, do you have trouble keeping track of your Banner Extensibility page changes? Trying to review HTML/CSS/JS code that's embedded as escaped strings in JSON files? Here's a tool to help translate the format to work better with Git repositories and make your development workflow much smoother.
@@ -56,7 +60,9 @@ This tool extracts that content into separate files so you can:
 git clone <your-repo-url>
 cd ide-pagebuilder
 
-# No dependencies required - just Python 3.7+
+# Install dependencies with uv (modern Python package manager)
+# If you don't have uv installed: pip install uv
+uv install
 ```
 
 ## Usage
@@ -64,25 +70,25 @@ cd ide-pagebuilder
 ### Extract Literals
 ```bash
 # Extract from all JSON files in current directory
-python extract_literals.py extract
+uv run python extract_literals.py extract
 
 # Extract from specific files
-python extract_literals.py extract "pages/*.json"
+uv run python extract_literals.py extract "pages/*.json"
 
 # Extract from specific directory
-python extract_literals.py extract "my-pages/**/*.json"
+uv run python extract_literals.py extract "my-pages/**/*.json"
 ```
 
 ### Rebuild JSON Files
 ```bash
 # Rebuild all extracted pages
-python extract_literals.py rebuild
+uv run python extract_literals.py rebuild
 ```
 
 ### Check Sync Status
 ```bash
 # Verify extracted files match JSON content
-python extract_literals.py check
+uv run python extract_literals.py check
 ```
 
 ## Project Structure
@@ -100,6 +106,14 @@ ide-pagebuilder/
 ├── pages/                       # Your Banner Extensibility JSON files
 │   ├── pages.my-custom-page.json
 │   └── pages.another-page.json
+├── tests/                       # Comprehensive test suite
+│   ├── test_basics.py          # Basic functionality tests
+│   ├── test_extract_literals.py # Extract/rebuild functionality tests
+│   ├── test_json_structure.py  # JSON schema validation tests
+│   ├── test_page_validation.py # Banner Extensibility validation tests
+│   └── test_security.py        # Security-focused tests
+├── pyproject.toml              # uv configuration and dependencies
+├── uv.lock                     # Locked dependency versions
 └── README.md
 ```
 
@@ -109,6 +123,62 @@ ide-pagebuilder/
 2. **Extracts content** into separate files with appropriate extensions (`.html`, `.js`, `.css`)
 3. **Creates mapping** files to track relationships between extracted files and JSON
 4. **Rebuilds JSON** by reading extracted files and updating the original JSON structure
+
+## Testing & Quality
+
+This project includes a comprehensive test suite to ensure code quality and reliability:
+
+### Running Tests
+```bash
+# Run all tests
+uv run pytest
+
+# Run tests with verbose output
+uv run pytest -v
+
+# Run specific test files
+uv run pytest tests/test_page_validation.py
+uv run pytest tests/test_security.py
+
+# Run tests and show coverage
+uv run pytest --cov=.
+```
+
+### Test Categories
+
+- **`test_basics.py`** - Basic functionality tests
+- **`test_extract_literals.py`** - Tests for the core extract/rebuild functionality
+  - File extension detection (HTML, CSS, JS)
+  - JSON extraction and reconstruction
+  - Sync status validation
+  - Multiple content type handling
+- **`test_json_structure.py`** - JSON schema and structure validation
+  - Valid JSON formatting
+  - Schema compliance
+  - Component structure validation
+  - Consistent indentation
+- **`test_page_validation.py`** - Banner Extensibility specific validation
+  - Required fields (`constantName`, `modelView`)
+  - Component type validation
+  - Resource references
+  - Naming conventions
+- **`test_security.py`** - Security-focused validation
+  - Hardcoded secrets detection
+  - Dangerous JavaScript patterns
+  - SQL injection protection
+  - External resource validation
+
+### Code Quality Tools
+```bash
+# Format code with ruff
+uv run ruff format .
+
+# Lint code with ruff
+uv run ruff check .
+
+# Type checking with mypy
+uv run mypy extract_literals.py
+```
 
 ## Configuration (Optional)
 
@@ -124,9 +194,9 @@ BANNER_BASE_URL=https://your-banner-server.edu
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Extract literals: `python extract_literals.py extract`
+3. Extract literals: `uv run python extract_literals.py extract`
 4. Make your changes in `extracted_literals/`
-5. Rebuild: `python extract_literals.py rebuild`
+5. Rebuild: `uv run python extract_literals.py rebuild`
 6. Commit your changes (`git commit -m 'Add amazing feature'`)
 7. Push to the branch (`git push origin feature/amazing-feature`)
 8. Open a Pull Request
