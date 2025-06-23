@@ -1,5 +1,24 @@
 <div align="center">
   <img src="logo.svg" alt="Banner Extensibility Page Builder" width="400">
+  
+  <p>
+    <a href="https://github.com/jmcpheron/ide-pagebuilder/blob/main/LICENSE">
+      <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
+    </a>
+    <a href="https://python.org">
+      <img src="https://img.shields.io/badge/Python-3.9+-blue.svg" alt="Python 3.9+">
+    </a>
+    <a href="https://pytest.org">
+      <img src="https://img.shields.io/badge/Testing-pytest-green.svg" alt="Testing: pytest">
+    </a>
+    <a href="https://docs.astral.sh/ruff/">
+      <img src="https://img.shields.io/badge/Code%20Style-ruff-black.svg" alt="Code style: ruff">
+    </a>
+    <a href="https://mypy-lang.org/">
+      <img src="https://img.shields.io/badge/Type%20Checking-mypy-blue.svg" alt="Type checking: mypy">
+    </a>
+    <img src="https://img.shields.io/badge/Version-0.1.0-brightgreen.svg" alt="Version 0.1.0">
+  </p>
 </div>
 
 # Banner Extensibility Page Builder - Git-Friendly Code Review Tool
@@ -48,6 +67,7 @@ Banner Extensibility pages store HTML/CSS/JS as escaped strings in JSON files, m
 - Merge conflicts difficult to resolve
 
 This tool extracts that content into separate files so you can:
+
 ✅ **See actual code changes** in GitHub diffs  
 ✅ **Use full IDE features** - syntax highlighting, IntelliSense, formatting  
 ✅ **Use standard tools** - ESLint, Prettier, etc.  
@@ -62,7 +82,7 @@ cd ide-pagebuilder
 
 # Install dependencies with uv (modern Python package manager)
 # If you don't have uv installed: pip install uv
-uv install
+uv sync
 ```
 
 ## Usage
