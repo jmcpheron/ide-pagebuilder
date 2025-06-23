@@ -67,6 +67,7 @@ Banner Extensibility pages store HTML/CSS/JS as escaped strings in JSON files, m
 - Merge conflicts difficult to resolve
 
 This tool extracts that content into separate files so you can:
+
 ✅ **See actual code changes** in GitHub diffs  
 ✅ **Use full IDE features** - syntax highlighting, IntelliSense, formatting  
 ✅ **Use standard tools** - ESLint, Prettier, etc.  
@@ -81,7 +82,7 @@ cd ide-pagebuilder
 
 # Install dependencies with uv (modern Python package manager)
 # If you don't have uv installed: pip install uv
-uv install
+uv sync
 ```
 
 ## Usage
