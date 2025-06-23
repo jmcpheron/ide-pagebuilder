@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="logo.svg" alt="Banner Extensibility Page Builder" width="400">
+</div>
+
 # Banner Extensibility Page Builder - Git-Friendly Code Review Tool
 
 Hey, do you have trouble keeping track of your Banner Extensibility page changes? Trying to review HTML/CSS/JS code that's embedded as escaped strings in JSON files? Here's a tool to help translate the format to work better with Git repositories and make your development workflow much smoother.
