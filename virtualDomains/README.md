@@ -13,9 +13,10 @@ Virtual domains in Banner Extensibility are JSON-based API endpoint definitions 
 ## Directory Structure
 
 ```
-virtualDomains/
-├── README.md                                    # This file
-├── virtualDomains.{serviceName}.json          # Virtual domain definitions
+project-root/
+├── virtualDomains/
+│   ├── README.md                               # This file
+│   └── virtualDomains.{serviceName}.json      # Virtual domain definitions
 └── extracted_virtual_domains/                 # Extracted SQL files (when using extraction tool)
     └── {serviceName}/
         ├── codeget.sql                         # GET operation SQL
