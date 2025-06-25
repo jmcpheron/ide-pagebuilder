@@ -62,15 +62,21 @@ uv run ruff format
 # Check code quality
 uv run ruff check
 
-# Run extract_literals script
+# Run extract_literals script (for pages)
 uv run python extract_literals.py extract
 uv run python extract_literals.py rebuild
 uv run python extract_literals.py check
+
+# Run extract_virtual_domains script (for virtual domains)
+uv run python extract_virtual_domains.py extract "virtualDomains/*.json"
+uv run python extract_virtual_domains.py rebuild
+uv run python extract_virtual_domains.py check
 ```
 
 ### Testing
 The project includes comprehensive test suites:
 - **Page validation tests**: Validate JSON structure and Banner Extensibility compliance
+- **Virtual domain tests**: Validate virtual domain structure, extraction/rebuild functionality, and security
 - **JSON structure tests**: Schema validation and syntax checking
 - **Security tests**: Check for hardcoded secrets and dangerous patterns
 - **Extract literals tests**: Test the literal extraction/rebuild functionality

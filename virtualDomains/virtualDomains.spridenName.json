@@ -1,0 +1,27 @@
+{
+   "owner": null,
+   "codePut": null,
+   "codeDelete": null,
+   "virtualDomainRoles": [
+      {
+         "allowDelete": false,
+         "allowPost": false,
+         "allowPut": false,
+         "roleName": "ADMIN-GPBADMA",
+         "allowGet": true
+      },
+      {
+         "allowDelete": false,
+         "allowPost": false,
+         "allowPut": false,
+         "roleName": "PBHEALTH",
+         "allowGet": true
+      }
+   ],
+   "codeGet": "select \r\ns.spriden_id GID,\r\ns.spriden_pidm P_PIDM,\r\ncase \r\nwhen p.spbpers_pref_first_name is not null \r\n  then \r\n  p.spbpers_pref_first_name || '[' || s.spriden_first_name || ']'\r\n  else s.spriden_first_name end as first,\r\ns.spriden_mi middle,\r\ns.spriden_last_name last \r\nfrom spriden s, spbpers p\r\nwhere s.spriden_change_ind is null\r\nand s.spriden_id =:gid\r\nand s.spriden_pidm = p.spbpers_pidm",
+   "typeOfCode": "S",
+   "fileTimestamp": null,
+   "serviceName": "spridenName",
+   "codePost": null,
+   "developerSecurity": []
+}
