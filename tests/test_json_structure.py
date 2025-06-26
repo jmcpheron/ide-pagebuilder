@@ -112,7 +112,8 @@ class TestJSONStructure:
 
     def test_extraction_map_schema(self):
         """Test extraction map JSON files have correct structure."""
-        extraction_map_schema = {
+        # Schema for page extraction maps
+        page_extraction_map_schema = {
             "type": "object",
             "properties": {
                 "source_file": {"type": "string"},
@@ -138,12 +139,44 @@ class TestJSONStructure:
             },
             "required": ["source_file", "page_name", "literals"],
         }
+        
+        # Schema for virtual domain extraction maps
+        virtual_domain_extraction_map_schema = {
+            "type": "object",
+            "properties": {
+                "source_file": {"type": "string"},
+                "service_name": {"type": "string"},
+                "sql_blocks": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "field": {"type": "string"},
+                            "filename": {"type": "string"},
+                            "content_hash": {"type": "string"},
+                        },
+                        "required": ["field", "filename", "content_hash"],
+                    },
+                },
+            },
+            "required": ["source_file", "service_name", "sql_blocks"],
+        }
 
         for map_file in Path(".").rglob("_extraction_map.json"):
             try:
                 with open(map_file, encoding="utf-8") as f:
                     data = json.load(f)
-                validate(instance=data, schema=extraction_map_schema)
+                
+                # Determine which schema to use based on the content
+                if "page_name" in data and "literals" in data:
+                    # This is a page extraction map
+                    validate(instance=data, schema=page_extraction_map_schema)
+                elif "service_name" in data and "sql_blocks" in data:
+                    # This is a virtual domain extraction map
+                    validate(instance=data, schema=virtual_domain_extraction_map_schema)
+                else:
+                    pytest.fail(f"Unknown extraction map format in {map_file}")
+                    
             except ValidationError as e:
                 pytest.fail(
                     f"Extraction map schema validation failed for {map_file}: {e}"

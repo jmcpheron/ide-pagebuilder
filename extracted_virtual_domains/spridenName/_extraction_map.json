@@ -1,0 +1,11 @@
+{
+  "source_file": "virtualDomains/virtualDomains.spridenName.json",
+  "service_name": "spridenName",
+  "sql_blocks": [
+    {
+      "field": "codeGet",
+      "filename": "codeget.sql",
+      "content_hash": "cda98c83ae07382d7e3c03cd65ce0052"
+    }
+  ]
+}
