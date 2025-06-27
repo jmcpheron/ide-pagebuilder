@@ -139,7 +139,7 @@ class TestJSONStructure:
             },
             "required": ["source_file", "page_name", "literals"],
         }
-        
+
         # Schema for virtual domain extraction maps
         virtual_domain_extraction_map_schema = {
             "type": "object",
@@ -166,7 +166,7 @@ class TestJSONStructure:
             try:
                 with open(map_file, encoding="utf-8") as f:
                     data = json.load(f)
-                
+
                 # Determine which schema to use based on the content
                 if "page_name" in data and "literals" in data:
                     # This is a page extraction map
@@ -176,7 +176,7 @@ class TestJSONStructure:
                     validate(instance=data, schema=virtual_domain_extraction_map_schema)
                 else:
                     pytest.fail(f"Unknown extraction map format in {map_file}")
-                    
+
             except ValidationError as e:
                 pytest.fail(
                     f"Extraction map schema validation failed for {map_file}: {e}"

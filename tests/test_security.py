@@ -172,39 +172,52 @@ class TestSecurity:
         """Test that external URLs are well-formed and use HTTPS."""
         # Pattern to find URLs in content
         url_pattern = r'https?://([^/\s"\'<>]+)'
-        
+
         def check_external_resources(content, file_path):
             urls = re.findall(url_pattern, content, re.IGNORECASE)
             for url in urls:
                 domain = url.lower()
-                
+
                 # Check for obvious security issues
-                if any(suspicious in domain for suspicious in [
-                    'localhost', '127.0.0.1', '192.168.', '10.0.0.', 'file://'
-                ]):
-                    pytest.fail(f"Suspicious local/file URL found in {file_path}: {domain}")
-                
+                if any(
+                    suspicious in domain
+                    for suspicious in [
+                        "localhost",
+                        "127.0.0.1",
+                        "192.168.",
+                        "10.0.0.",
+                        "file://",
+                    ]
+                ):
+                    pytest.fail(
+                        f"Suspicious local/file URL found in {file_path}: {domain}"
+                    )
+
                 # Check for malformed domains
-                if '..' in domain or domain.startswith('.') or domain.endswith('.'):
+                if ".." in domain or domain.startswith(".") or domain.endswith("."):
                     pytest.fail(f"Malformed domain found in {file_path}: {domain}")
-        
+
         def check_components_for_external_resources(components, file_path):
             for component in components:
                 if component.get("type") == "literal":
                     value = component.get("value", "")
                     if value:
                         check_external_resources(value, file_path)
-                
+
                 # Recursively check nested components
                 if "components" in component:
-                    check_components_for_external_resources(component["components"], file_path)
-        
+                    check_components_for_external_resources(
+                        component["components"], file_path
+                    )
+
         for page_file in page_files:
             with open(page_file, encoding="utf-8") as f:
                 data = json.load(f)
-            
+
             if "modelView" in data and "components" in data["modelView"]:
-                check_components_for_external_resources(data["modelView"]["components"], page_file)
+                check_components_for_external_resources(
+                    data["modelView"]["components"], page_file
+                )
 
     def test_access_control_fields(self, page_files):
         """Test that access control fields are properly configured."""
