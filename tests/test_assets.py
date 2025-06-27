@@ -1,6 +1,5 @@
 """Tests for project assets like logos and documentation files."""
 
-import os
 import re
 from pathlib import Path
 
