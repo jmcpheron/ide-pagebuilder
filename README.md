@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="logo.svg" alt="Git-Friendly Banner Pages" width="400">
+  <img src="logo.png" alt="Git-Friendly Banner Pages" width="400">
   
   <p>
     <a href="https://github.com/jmcpheron/ide-pagebuilder/blob/main/LICENSE">
