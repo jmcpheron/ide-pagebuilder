@@ -139,7 +139,7 @@ Both tools extract embedded content into proper files so you can:
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone https://github.com/jmcpheron/ide-pagebuilder.git
 cd ide-pagebuilder
 
 # Install dependencies with uv (modern Python package manager)
@@ -433,7 +433,7 @@ uv run python extract_literals.py rebuild
 # 1. Set up your project structure
 mkdir my-banner-app
 cd my-banner-app
-git clone <this-repo> .
+git clone https://github.com/jmcpheron/ide-pagebuilder.git .
 
 # 2. Add your JSON files
 # - Put page definitions in pages/
