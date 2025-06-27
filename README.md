@@ -23,23 +23,23 @@
   </p>
 </div>
 
-# Git-Friendly Banner Pages 🎉
+# Git-Friendly Banner Pages
 
-*The community toolkit that makes Banner page development actually fun!*
+*Community toolkit for sane Banner page development*
 
-Hey there! 👋 Tired of wrestling with Banner pages where all your beautiful HTML/CSS/JS code gets smooshed into escaped JSON strings? Sick of trying to review SQL queries that look like `"SELECT * FROM\r\nstudent WHERE\r\nid = :id"`? 
+Tired of wrestling with Banner pages where all your HTML/CSS/JS code gets smooshed into escaped JSON strings? Sick of trying to review SQL queries that look like `"SELECT * FROM\r\nstudent WHERE\r\nid = :id"`? 
 
-We feel your pain! This toolkit has **two magical tools** that extract all that embedded code into proper files so you can actually *see* what you're working with. No more JSON nightmares!
+This toolkit has **two tools** that extract all that embedded code into proper files so you can actually see what you're working with.
 
 ## Which Tool Do I Need?
 
-🎨 **Making pretty pages?** → Use `extract_literals.py` for HTML/CSS/JS extraction  
-🗄️ **Wrestling with database stuff?** → Use `extract_virtual_domains.py` for SQL extraction  
-🚀 **Building something awesome?** → Use both tools together!
+**Working on pages?** → Use `extract_literals.py` for HTML/CSS/JS extraction  
+**Working on virtual domains?** → Use `extract_virtual_domains.py` for SQL extraction  
+**Building a complete app?** → Use both tools together
 
 ## Quick Start
 
-### For Page Development (HTML/CSS/JS) 🎨
+### For Page Development (HTML/CSS/JS)
 
 1. **Put your Banner Extensibility page JSON files in a directory**
    ```bash
@@ -70,7 +70,7 @@ We feel your pain! This toolkit has **two magical tools** that extract all that 
    uv run python extract_literals.py rebuild
    ```
 
-### For Virtual Domain Development (SQL) 🗄️
+### For Virtual Domain Development (SQL)
 
 1. **Put your Banner Extensibility virtual domain JSON files in a directory**
    ```bash
@@ -105,32 +105,32 @@ That's it! Your JSON files are updated with the changes from your extracted file
 
 ## What This Solves
 
-Banner page development has some... *interesting* challenges:
+Banner page development has some interesting challenges:
 
 ### Page Development Pain Points
-Banner **pages** stuff all your beautiful HTML/CSS/JS into escaped JSON strings, which makes:
-- Code reviews feel like decoding hieroglyphics 😵
+Banner **pages** stuff all your HTML/CSS/JS into escaped JSON strings, which makes:
+- Code reviews feel like decoding hieroglyphics
 - Git diffs completely unreadable  
-- Your IDE think everything is just a big string 🤦‍♂️
-- Merge conflicts absolutely nightmarish
+- Your IDE think everything is just a big string
+- Merge conflicts nightmarish
 
 ### Virtual Domain Headaches
 Banner **virtual domains** squish SQL queries into JSON strings too, which means:
-- Debugging SQL feels like solving puzzles blindfolded 🧮
+- Debugging SQL feels like solving puzzles blindfolded
 - Query optimization becomes guesswork
-- No syntax highlighting for your beautiful SQL 😢
-- Collaborating on complex queries is... rough
+- No syntax highlighting for your SQL
+- Collaborating on complex queries is rough
 
-### How We Fix It 🔧
+### How We Fix It
 
-Both tools extract all that embedded stuff into proper files so you can:
+Both tools extract embedded content into proper files so you can:
 
-✨ **Actually see your code changes** in Git diffs (no more escaped nightmare strings!)  
-✨ **Use your IDE like a normal human** - syntax highlighting, autocomplete, the works  
-✨ **Use real developer tools** - ESLint, Prettier, SQL formatters, whatever you love  
-✨ **Collaborate without crying** - your teammates don't need to be JSON wizards  
-✨ **Debug like a pro** - test SQL directly in your favorite database tool  
-✨ **Actually optimize stuff** - use proper analysis tools instead of squinting at strings  
+✅ **See actual code changes** in Git diffs  
+✅ **Use your IDE properly** - syntax highlighting, autocomplete, formatting  
+✅ **Use standard dev tools** - ESLint, Prettier, SQL formatters  
+✅ **Collaborate effectively** - your teammates don't need to be JSON experts  
+✅ **Debug efficiently** - test SQL directly in your database client  
+✅ **Optimize performance** - use proper analysis tools  
 
 ## Installation
 
@@ -146,7 +146,7 @@ uv sync
 
 ## Usage
 
-### Page Literals (HTML/CSS/JS) 🎨
+### Page Literals (HTML/CSS/JS)
 
 #### Extract Literals
 ```bash
@@ -172,7 +172,7 @@ uv run python extract_literals.py rebuild
 uv run python extract_literals.py check
 ```
 
-### Virtual Domains (SQL) 🗄️
+### Virtual Domains (SQL)
 
 #### Extract SQL
 ```bash
@@ -255,14 +255,14 @@ ide-pagebuilder/
 - **Test SQL queries** directly in your database client
 - **Collaborate on complex applications** where different team members handle UI vs database logic
 
-## Virtual Domains Deep Dive 🤿
+## Virtual Domains Deep Dive
 
 ### What Are Virtual Domains?
 Virtual domains are basically Banner's way of letting you create custom API endpoints. They're JSON files that:
-- 🗄️ **Define SQL queries** for GET, POST, PUT, DELETE operations  
-- 🔒 **Handle security** and role-based access control
-- 🔄 **Translate HTTP requests** into database magic
-- 📊 **Return data in JSON format** for your pages to consume
+- **Define SQL queries** for GET, POST, PUT, DELETE operations  
+- **Handle security** and role-based access control
+- **Translate HTTP requests** into database operations
+- **Return data in JSON format** for your pages to consume
 
 ### Virtual Domain Structure
 Each virtual domain JSON file contains:
@@ -274,31 +274,31 @@ Each virtual domain JSON file contains:
 - `virtualDomainRoles`: Array of role-based permissions
 - `typeOfCode`: Usually "S" for SQL
 
-### Virtual Domain Development Workflow 🚧
+### Virtual Domain Development Workflow
 ```bash
 # 1. Create your virtual domain JSON file
 virtualDomains/virtualDomains.student-lookup.json
 
-# 2. Extract SQL for easy editing (the magic happens here!)
+# 2. Extract SQL for editing
 uv run python extract_virtual_domains.py extract "virtualDomains/*.json"
 
-# 3. Edit the extracted SQL files like a normal human
+# 3. Edit the extracted SQL files
 code extracted_virtual_domains/student-lookup/codeget.sql
 
 # 4. Test your SQL directly in your database client
-# (No more escaping strings! 🎉)
+# (No more escaping strings!)
 
 # 5. Rebuild JSON when ready
 uv run python extract_virtual_domains.py rebuild
 
-# 6. Deploy to Banner and watch it work!
+# 6. Deploy to Banner
 ```
 
-### SQL Security Best Practices 🔒
+### SQL Security Best Practices
 - ✅ **Use parameterized queries** (`:parameter_name`) to prevent SQL injection
 - ✅ **Leverage Banner's security context** (`:parm_user_pidm`) for user-specific data
 - ✅ **Define proper roles** in `virtualDomainRoles` for access control
-- ❌ **Never hardcode sensitive data** in SQL queries (seriously, don't!)
+- ❌ **Never hardcode sensitive data** in SQL queries
 
 ### Example: Student Name Lookup
 ```sql
@@ -384,9 +384,9 @@ uv run mypy extract_literals.py
 uv run mypy extract_virtual_domains.py
 ```
 
-## Troubleshooting 🚑
+## Troubleshooting
 
-### Common Issues 🤔
+### Common Issues
 
 **❌ "No JSON files found matching pattern"**
 - Check your file paths and patterns
@@ -417,15 +417,15 @@ uv run python extract_literals.py rebuild
 - Check that the `literal` field contains actual HTML/CSS/JS content
 - Verify JSON structure is valid
 
-### Getting Help 🎆
-- 📝 Check the `CLAUDE.md` file for detailed developer instructions
-- 🗋 Check the `virtualDomains/README.md` for virtual domain specifics
-- 🧑‍💼 Run the test suite: `uv run pytest -v`
-- 🙋‍♂️ Open an issue on GitHub if you're stuck!
+### Getting Help
+- Check the `CLAUDE.md` file for detailed developer instructions
+- Check the `virtualDomains/README.md` for virtual domain specifics
+- Run the test suite: `uv run pytest -v`
+- Open an issue on GitHub if you're stuck
 
-## Common Workflows 📋
+## Common Workflows
 
-### Building Something Awesome 🚀
+### Building a Complete App
 ```bash
 # 1. Set up your project structure
 mkdir my-banner-app
@@ -455,7 +455,7 @@ uv run pytest  # Run all tests
 # Your JSON files are ready!
 ```
 
-### Code Review Workflow 👀
+### Code Review Workflow
 ```bash
 # Reviewer can easily see actual code changes
 git diff  # Shows real HTML/CSS/JS/SQL changes, not escaped JSON
@@ -504,16 +504,16 @@ BANNER_BASE_URL=https://your-banner-server.edu
 8. Push to the branch (`git push origin feature/amazing-feature`)
 9. Open a Pull Request
 
-## About This Project 😊
+## About This Project
 
-Hey there! I'm Jason, and I work at West Valley Mission Community College District. I built this toolkit because Banner page development was making me want to throw my laptop out the window! 😅 All that beautiful code trapped in escaped JSON strings... there had to be a better way!
+Hey there! I'm Jason, and I work at West Valley Mission Community College District. I built this toolkit because Banner page development was getting frustrating – all that code trapped in escaped JSON strings, there had to be a better way.
 
-This is my little side project that I'm sharing with fellow Banner developers everywhere. If you're dealing with the same "why is my HTML crying?" frustrations, hopefully this makes your life a bit more pleasant! 
+This is my side project that I'm sharing with fellow Banner developers. If you're dealing with the same frustrations, hopefully this makes your workflow smoother.
 
-### Why I'm Sharing This 🌟
-- 🎓 **Community colleges everywhere**: We're all in this together!
-- 🏛️ **Banner developers**: Let's make this less painful for everyone
-- 🤝 **Open source vibes**: Use it, break it, fix it, make it better!
+### Why I'm Sharing This
+- **Community colleges**: We're all dealing with similar challenges
+- **Banner developers**: Let's make this easier for everyone
+- **Open source**: Use it, improve it, share it
 
 ---
 
