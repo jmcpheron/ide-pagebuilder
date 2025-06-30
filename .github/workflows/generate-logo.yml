@@ -1,0 +1,17 @@
+name: Generate Logo
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  models: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jmcpheron/chiaro-oscuro/generate-action@v0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
