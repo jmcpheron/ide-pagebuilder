@@ -12,6 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: jmcpheron/chiaro-oscuro/generate-action@v0.1
+      - uses: jmcpheron/chiaro-oscuro/generate-action@v0.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
