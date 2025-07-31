@@ -9,6 +9,9 @@ Usage:
     python extract_virtual_domains.py extract [file_pattern]  # Extract SQL to separate files
     python extract_virtual_domains.py rebuild [file_pattern]  # Rebuild JSON from extracted files
     python extract_virtual_domains.py check [file_pattern]    # Check if extracted files are in sync
+
+Options:
+    --normalize-newlines    Convert all files to Unix-style newlines (LF)
 """
 
 import glob
@@ -17,14 +20,41 @@ import json
 import os
 import sys
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 
-def extract_sql_from_json(json_file: str, output_dir: str) -> Dict[str, Any]:
+def detect_newline_style(content: str) -> str:
+    """Detect the predominant newline style in content."""
+    if not content:
+        return '\n'  # Default to Unix style
+    
+    # Count different newline types
+    crlf_count = content.count('\r\n')
+    lf_count = content.count('\n') - crlf_count  # Subtract CRLF occurrences
+    cr_count = content.count('\r') - crlf_count  # Subtract CRLF occurrences
+    
+    # Return the most common style
+    if crlf_count > max(lf_count, cr_count):
+        return '\r\n'
+    elif cr_count > lf_count:
+        return '\r'
+    else:
+        return '\n'
+
+
+def extract_sql_from_json(json_file: str, output_dir: str, normalize_newlines: bool = False) -> Dict[str, Any]:
     """Extract SQL code blocks from a virtual domain JSON file into separate .sql files."""
 
-    with open(json_file, encoding="utf-8") as f:
-        data = json.load(f)
+    # Read the entire file to detect newline style
+    with open(json_file, 'rb') as f:
+        raw_content = f.read()
+    
+    # Decode and detect newline style
+    text_content = raw_content.decode('utf-8')
+    detected_newline = detect_newline_style(text_content)
+    
+    # Parse JSON
+    data = json.loads(text_content)
 
     service_name = data.get(
         "serviceName", Path(json_file).stem.replace("virtualDomains.", "")
@@ -37,6 +67,7 @@ def extract_sql_from_json(json_file: str, output_dir: str) -> Dict[str, Any]:
         "source_file": json_file,
         "service_name": service_name,
         "sql_blocks": [],
+        "newline_style": detected_newline if not normalize_newlines else '\n'
     }
 
     # SQL code fields that might contain extractable content
@@ -45,22 +76,23 @@ def extract_sql_from_json(json_file: str, output_dir: str) -> Dict[str, Any]:
     for field in sql_fields:
         sql_content = data.get(field)
         if sql_content and sql_content.strip():
-            # Clean up common SQL formatting issues from Banner exports
-            cleaned_content = sql_content.replace("\r\n", "\n").replace("\r", "\n")
+            # Normalize newlines if requested
+            if normalize_newlines:
+                sql_content = sql_content.replace("\r\n", "\n").replace("\r", "\n")
 
             filename = f"{field.lower()}.sql"
             filepath = domain_dir / filename
 
-            # Write the SQL content to file
-            with open(filepath, "w", encoding="utf-8") as f:
-                f.write(cleaned_content)
+            # Write the SQL content to file preserving newline style
+            with open(filepath, 'wb') as f:
+                f.write(sql_content.encode('utf-8'))
 
             # Store mapping for rebuilding
             extraction_map["sql_blocks"].append(
                 {
                     "field": field,
                     "filename": filename,
-                    "content_hash": hashlib.md5(cleaned_content.encode()).hexdigest(),
+                    "content_hash": hashlib.md5(sql_content.encode()).hexdigest(),
                 }
             )
 
@@ -93,22 +125,34 @@ def rebuild_json_from_sql(domain_dir: str) -> str:
 
     source_file = extraction_map["source_file"]
 
-    # Load original JSON
-    with open(source_file, encoding="utf-8") as f:
-        data = json.load(f)
+    # Load original JSON preserving format
+    with open(source_file, 'rb') as f:
+        raw_content = f.read()
+    
+    text_content = raw_content.decode('utf-8')
+    data = json.loads(text_content)
+    
+    # Get the newline style to use
+    newline_style = extraction_map.get('newline_style', '\n')
 
     # Read extracted SQL content back
     for sql_info in extraction_map["sql_blocks"]:
         filepath = domain_path / sql_info["filename"]
         if filepath.exists():
-            with open(filepath, encoding="utf-8") as f:
-                content = f.read()
+            with open(filepath, 'rb') as f:
+                content = f.read().decode('utf-8')
                 # Update the JSON with the file content
                 data[sql_info["field"]] = content
 
-    # Write updated JSON back
-    with open(source_file, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
+    # Write updated JSON back with proper newline handling
+    json_str = json.dumps(data, indent=2, ensure_ascii=False)
+    
+    # Convert newlines to match the original file's style
+    if newline_style != '\n':
+        json_str = json_str.replace('\n', newline_style)
+    
+    with open(source_file, 'wb') as f:
+        f.write(json_str.encode('utf-8'))
 
     print(f"Rebuilt: {source_file}")
     return source_file
@@ -148,8 +192,8 @@ def check_sync_status(domain_dir: str) -> bool:
             all_synced = False
             continue
 
-        with open(filepath, encoding="utf-8") as f:
-            file_content = f.read()
+        with open(filepath, 'rb') as f:
+            file_content = f.read().decode('utf-8')
 
         json_content = data.get(field, "")
 
@@ -178,6 +222,12 @@ def main():
         sys.exit(1)
 
     command = sys.argv[1]
+    
+    # Check for --normalize-newlines flag
+    normalize_newlines = '--normalize-newlines' in sys.argv
+    if normalize_newlines:
+        sys.argv.remove('--normalize-newlines')
+    
     pattern = sys.argv[2] if len(sys.argv) > 2 else "**/*.json"
 
     # Find virtual domain JSON files matching pattern
@@ -209,7 +259,7 @@ def main():
         print(f"Extracting SQL from {len(json_files)} virtual domain files...")
         for json_file in json_files:
             print(f"\nProcessing: {json_file}")
-            extract_sql_from_json(json_file, output_dir)
+            extract_sql_from_json(json_file, output_dir, normalize_newlines)
 
         print(f"\n✅ Extraction complete! Files saved to: {output_dir}")
         print("You can now edit the extracted .sql files directly.")
